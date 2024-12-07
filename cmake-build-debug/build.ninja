@@ -106,6 +106,39 @@ build AssignmentSkipList.exe: CXX_EXECUTABLE_LINKER__AssignmentSkipList_Debug CM
   TARGET_IMPLIB = libAssignmentSkipList.dll.a
   TARGET_PDB = AssignmentSkipList.exe.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target AssignmentRBTree
+
+
+#############################################
+# Order-only phony target for AssignmentRBTree
+
+build cmake_object_order_depends_target_AssignmentRBTree: phony || .
+
+build CMakeFiles/AssignmentRBTree.dir/RBTree/RBTree.cpp.obj: CXX_COMPILER__AssignmentRBTree_unscanned_Debug D$:/PROGRAMMING/C++/Algorithms/Assignment2/RBTree/RBTree.cpp || cmake_object_order_depends_target_AssignmentRBTree
+  DEP_FILE = CMakeFiles\AssignmentRBTree.dir\RBTree\RBTree.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AssignmentRBTree.dir
+  OBJECT_FILE_DIR = CMakeFiles\AssignmentRBTree.dir\RBTree
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target AssignmentRBTree
+
+
+#############################################
+# Link the executable AssignmentRBTree.exe
+
+build AssignmentRBTree.exe: CXX_EXECUTABLE_LINKER__AssignmentRBTree_Debug CMakeFiles/AssignmentRBTree.dir/RBTree/RBTree.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\AssignmentRBTree.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = AssignmentRBTree.exe
+  TARGET_IMPLIB = libAssignmentRBTree.dll.a
+  TARGET_PDB = AssignmentRBTree.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -134,6 +167,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build Assignment2: phony Assignment2.exe
 
+build AssignmentRBTree: phony AssignmentRBTree.exe
+
 build AssignmentSkipList: phony AssignmentSkipList.exe
 
 # =============================================================================
@@ -144,7 +179,7 @@ build AssignmentSkipList: phony AssignmentSkipList.exe
 #############################################
 # Folder: D:/PROGRAMMING/C++/Algorithms/Assignment2/cmake-build-debug
 
-build all: phony Assignment2.exe AssignmentSkipList.exe
+build all: phony Assignment2.exe AssignmentSkipList.exe AssignmentRBTree.exe
 
 # =============================================================================
 # Built-in targets
