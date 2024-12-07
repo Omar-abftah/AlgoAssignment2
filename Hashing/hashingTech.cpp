@@ -86,13 +86,6 @@ private:
     int size;
     vector<vector<int>>map;
     int collisionResolutionTechnique;
-    HashMap(int sz, hashingTechniques *h, int collisionTech){
-        this->size = sz;
-        this->hq = h;
-        vector<vector<int>>v(size,vector<int>(0,-INT_MAX));
-        map = v;
-        this->collisionResolutionTechnique = collisionTech;
-    }
 public:
     static int getLeastPrime(int number){
         vector<bool> arr(1e5,true);
@@ -143,7 +136,7 @@ public:
                 int newIndex = (index + i*secondHash)%size;
                 if(map[newIndex].empty()){
                     map[newIndex].push_back(number);
-                    break;
+                    return;
                 }
             }
 
@@ -164,10 +157,62 @@ public:
         }
         return false;
     }
+
+    HashMap(int sz, hashingTechniques *h, int collisionTech){
+        this->size = sz;
+        this->hq = h;
+        vector<vector<int>>v(size,vector<int>(0,-INT_MAX));
+        map = v;
+        this->collisionResolutionTechnique = collisionTech;
+    }
 };
 
 
 int main()
 {
+    hashingTechniques *hashingTech;
+    cout<<""
+          "1- Division Method\n"
+          "2- Multiplication Method\n"
+          "3- Mid Square Method\n"
+          "4- Folding Method\n"
+          "Please enter the number Corresponding to the Hashing technique you want to use: ";
+    int numberOfTech;cin>>numberOfTech;
+    cout<<""
+          "1- Chaining Method\n"
+          "2- Open Addressing Method(Linear Probing)\n"
+          "3- Open Addressing Method(Quadratic Probing)\n"
+          "4- Double Hashing Method\n"
+          "Please enter the number Corresponding to the Collision Resolution technique you want to use: ";
+    int numberOfCollisionTech;cin>>numberOfCollisionTech;
+
+    switch (numberOfTech) {
+        case 1:
+            hashingTech = new DivisionMethod();
+            break;
+        case 2:
+            hashingTech = new MultiplicationMethod();
+            break;
+        case 3:
+            hashingTech = new MidSquareMethod();
+            break;
+        case 4:
+            hashingTech = new FoldingMethod();
+            break;
+        default:
+            cout<<"NOT A VALID CHOICE! \n";
+            return 0;
+    }
+    cout<<""
+          "Enter the size of the map: ";
+    int size;cin>>size;
+    auto *hashmap = new HashMap(size,hashingTech, numberOfCollisionTech);
+    hashmap->insert(10);
+    hashmap->insert(20);
+    if(hashmap->search(50))cout<<"Yes\n";
+    else cout<<"No\n";
+    delete hashingTech;
+    delete hashmap;
+
     return 0;
 }

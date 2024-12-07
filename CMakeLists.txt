@@ -4,3 +4,4 @@ project(Assignment2)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Assignment2 Hashing/hashingTech.cpp)
+add_executable(AssignmentSkipList SkipList/skipList.cpp)

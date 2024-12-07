@@ -1,0 +1,9 @@
+# ninja log v6
+4	1162	7551428865648799	CMakeFiles/Assignment2.dir/Hashing/hashingTech.cpp.obj	41b2d5ab0d62929f
+7	419	7551429649101445	build.ninja	cc6683ad27903a54
+1164	1416	7551428877253894	Assignment2.exe	a5364034250d696b
+2	119	7551429547429322	CMakeFiles/Assignment2SkipList.dir/SkipList/skipList.cpp.obj	166d60fed582951d
+26	719	7551427906470887	CMakeFiles/SkipListEx.dir/SkipList/skipList.cpp.obj	e9ea6daab74086b0
+2	112	7551429865384606	CMakeFiles/AssignmentSkipList.dir/SkipList/skipList.cpp.obj	37f403483af27045
+3	727	7551430377674920	CMakeFiles/AssignmentSkipList.dir/SkipList/skipList.cpp.obj	37f403483af27045
+727	913	7551430384910675	AssignmentSkipList.exe	8e589203f302abc1
