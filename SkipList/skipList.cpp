@@ -256,16 +256,16 @@ public:
     void updatePlayerScore(string name, int scoreChange) {
         auto it = playerMap.find(name);
         if (it == playerMap.end()) {
-            cout << "player is not Found\n";
+            cout << "Player is not Found\n";
             return;
         }
-
-        PlayerNode* playerNode = it->second;
-        Player* player = playerNode->playerData;
+        Player* player = new Player(*it->second->playerData);
+        player->score += scoreChange;
 
         removePlayer(name);
-        player->score += scoreChange;
         addPlayer(player->name, player->score);
+
+        delete player;
     }
     vector<Player*> getTopKElements(int k){
         vector<Player*> topKPlayers;
@@ -294,7 +294,7 @@ public:
             PlayerNode* current = dynamic_cast<PlayerNode*>(head->nextElements[i]);
             cout<<"Level "<< i<<": ";
             while(current){
-                cout<<current->playerData->score<<" ";
+                cout<<"("<<current->playerData->name <<": "<< current->playerData->score<<") ";
                 current = dynamic_cast<PlayerNode*>(current->nextElements[i]);
             }
             cout<<endl;
@@ -307,82 +307,117 @@ public:
 };
 
 int main() {
-    playerSkipList gameLeaderboard(5);
-
-    while (true) {
-        cout << "\n--- Multiplayer Game Management ---\n"
-             << "1 - Add a Player\n"
-             << "2 - Remove a Player\n"
-             << "3 - Update Player Score\n"
-             << "4 - Get Player Score\n"
-             << "5 - Get Top N Players\n"
-             << "6 - Print All Players\n"
-             << "7 - Exit\n"
-             << "Enter your choice: ";
-
-        int choice;
-        cin >> choice;
-
-        switch (choice) {
-            case 1: {
-                string name;
-                int initialScore;
-                cout << "Enter player name: ";
-                cin >> name;
-                cout << "Enter initial score: ";
-                cin >> initialScore;
-                gameLeaderboard.addPlayer(name, initialScore);
+    cout<<"1- Normal SkipList\n";
+    cout<<"2- Game\n";
+    cout<<"Please choose the number of the SkipList you want to try: ";
+    int skipListType, maxLevel;cin>>skipListType;
+    skipListType--;
+    cout<<"Enter the max Level: ";cin>>maxLevel;
+    if(skipListType == 0){
+        int op;
+        SkipList skipList(maxLevel);
+        while(true){
+            cout<<"1- Insert New Element\n";
+            cout<<"2- Delete an Element\n";
+            cout<<"3- Search for an Element\n";
+            cout<<"4- Print the Whole List\n";
+            cout<<"5- Exit\n";
+            cout<<"Enter the number of the function you want to do: ";
+            cin>>op;
+            if(op == 1){
+                cout<<"Enter the element you wan0t to add: ";
+                int val;cin>>val;
+                skipList.insert(val);
+                cout<<"The element "<<val<<" is inserted\n";
+            }
+            else if(op == 2){
+                cout<<"Enter the element you want to delete: ";
+                int val;cin>>val;
+                skipList.remove(val);
+                cout<<"The element "<<val<<" is Removed\n";
+            }
+            else if(op == 3){
+                cout<<"Enter the element you want to search for: ";
+                int val;cin>>val;
+                bool isFound = skipList.search(val);
+                cout<<"The element "<<val<<(isFound ? " is Found\n":"Is Not Found\n");
+            }
+            else if(op == 4){
+                skipList.print();
+            }
+            else if(op == 5){
+                cout<<"Exiting...";
                 break;
             }
-            case 2: {
-                string name;
-                cout << "Enter player name to remove: ";
-                cin >> name;
-                gameLeaderboard.removePlayer(name);
-                break;
-            }
-            case 3: {
-                string name;
-                int scoreChange;
-                cout << "Enter player name: ";
-                cin >> name;
-                cout << "Enter score change (positive or negative): ";
-                cin >> scoreChange;
-                gameLeaderboard.updatePlayerScore(name, scoreChange);
-                break;
-            }
-            case 4: {
-                string name;
-                cout << "Enter player name to check score: ";
-                cin >> name;
-                int score = gameLeaderboard.printPlayerScore(name);
-                if (score != -1) {
-                    cout << name << "'s score: " << score << endl;
-                }
-                break;
-            }
-            case 5: {
-                int n;
-                cout << "Enter number of top players to retrieve: ";
-                cin >> n;
-                vector<Player*> topPlayers = gameLeaderboard.getTopKElements(n);
-                cout << "Top " << n << " Players:\n";
-                for (auto player : topPlayers) {
-                    cout << player->name << ": " << player->score << endl;
-                }
-                break;
-            }
-            case 6: {
-                gameLeaderboard.printPlayers();
-                break;
-            }
-            case 7: {
-                cout << "Exiting...\n";
-                return 0;
-            }
-            default: {
-                cout << "Invalid choice. Please try again.\n";
+            else{
+                cout<<"Please enter a valid choice\n";
             }
         }
     }
+    else if(skipListType == 1){
+        int op;
+        playerSkipList playerManger(maxLevel);
+        while(true){
+            cout<<"1- Add New Player\n";
+            cout<<"2- Remove a Player\n";
+            cout<<"3- Get a player's score\n";
+            cout<<"4- Update a player's score\n";
+            cout<<"5- Get Top Players\n";
+            cout<<"6- Print the Whole Scoreboard\n";
+            cout<<"7- Exit\n";
+            cout<<"Enter the number of the function you want to do: ";
+            cin>>op;
+            if(op == 1){
+                cout<<"Enter the Player Name: ";
+                string name;cin>>name;
+                cout<<"Enter the Player InitialScore: ";
+                int score;cin>>score;
+                playerManger.addPlayer(name,score);
+                cout<<"The Player "<<name<<" is inserted with score "<<score<<"\n";
+            }
+            else if(op == 2){
+                cout<<"Enter the name of the player you want to delete: ";
+                string name;cin>>name;
+                playerManger.removePlayer(name);
+                cout<<"The Player "<<name<<" is Removed\n";
+            }
+            else if(op == 3){
+                cout<<"Enter the name of the Player: ";
+                string name;cin>>name;
+                int score = playerManger.printPlayerScore(name);
+                cout<<"The Player "<<name<<"'s score is "<<score <<"\n";
+            }
+            else if(op == 4){
+                cout<<"Enter the name of the Player: ";
+                string name;cin>>name;
+                cout<<"Enter the value u want to add or subtract from his score(Positive or Negative): ";
+                int increment;cin>>increment;
+                playerManger.updatePlayerScore(name, increment);
+                cout<<"The Player "<<name<<"'s score after Updating is "<<playerManger.printPlayerScore(name)<<"\n";
+            }
+            else if(op == 5){
+                cout<<"Enter the Number of the top player's you want to have: ";
+                int k;cin>>k;
+                vector<Player*> topKElements = playerManger.getTopKElements(k);
+                for(auto player: topKElements){
+                    cout<<player->name<<": "<<player->score<<endl;
+                }
+            }
+            else if(op == 6){
+                playerManger.printPlayers();
+            }
+            else if(op == 7){
+                cout<<"Exiting...";
+                break;
+            }
+            else{
+                cout<<"Please enter a valid Choice\n";
+            }
+        }
+    }
+    else{
+        cout<<"NOT A VALID CHOICE\n";
+
+    }
+    return 0;
 }
