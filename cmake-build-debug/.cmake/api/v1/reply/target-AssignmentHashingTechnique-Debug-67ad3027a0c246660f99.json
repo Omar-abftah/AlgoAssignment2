@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Assignment2.exe"
+			"path" : "AssignmentHashingTechnique.exe"
 		},
 		{
-			"path" : "Assignment2.pdb"
+			"path" : "AssignmentHashingTechnique.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"id" : "Assignment2::@6890427a1f51a3e7e1df",
+	"id" : "AssignmentHashingTechnique::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -76,8 +76,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "Assignment2",
-	"nameOnDisk" : "Assignment2.exe",
+	"name" : "AssignmentHashingTechnique",
+	"nameOnDisk" : "AssignmentHashingTechnique.exe",
 	"paths" : 
 	{
 		"build" : ".",

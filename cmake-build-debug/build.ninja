@@ -41,37 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = D$:/PROGRAMMING/C++/Algorithms/Assignment2/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Assignment2
+# Object build statements for EXECUTABLE target AssignmentHashingTechnique
 
 
 #############################################
-# Order-only phony target for Assignment2
+# Order-only phony target for AssignmentHashingTechnique
 
-build cmake_object_order_depends_target_Assignment2: phony || .
+build cmake_object_order_depends_target_AssignmentHashingTechnique: phony || .
 
-build CMakeFiles/Assignment2.dir/Hashing/hashingTech.cpp.obj: CXX_COMPILER__Assignment2_unscanned_Debug D$:/PROGRAMMING/C++/Algorithms/Assignment2/Hashing/hashingTech.cpp || cmake_object_order_depends_target_Assignment2
-  DEP_FILE = CMakeFiles\Assignment2.dir\Hashing\hashingTech.cpp.obj.d
+build CMakeFiles/AssignmentHashingTechnique.dir/Hashing/hashingTech.cpp.obj: CXX_COMPILER__AssignmentHashingTechnique_unscanned_Debug D$:/PROGRAMMING/C++/Algorithms/Assignment2/Hashing/hashingTech.cpp || cmake_object_order_depends_target_AssignmentHashingTechnique
+  DEP_FILE = CMakeFiles\AssignmentHashingTechnique.dir\Hashing\hashingTech.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Assignment2.dir
-  OBJECT_FILE_DIR = CMakeFiles\Assignment2.dir\Hashing
+  OBJECT_DIR = CMakeFiles\AssignmentHashingTechnique.dir
+  OBJECT_FILE_DIR = CMakeFiles\AssignmentHashingTechnique.dir\Hashing
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Assignment2
+# Link build statements for EXECUTABLE target AssignmentHashingTechnique
 
 
 #############################################
-# Link the executable Assignment2.exe
+# Link the executable AssignmentHashingTechnique.exe
 
-build Assignment2.exe: CXX_EXECUTABLE_LINKER__Assignment2_Debug CMakeFiles/Assignment2.dir/Hashing/hashingTech.cpp.obj
+build AssignmentHashingTechnique.exe: CXX_EXECUTABLE_LINKER__AssignmentHashingTechnique_Debug CMakeFiles/AssignmentHashingTechnique.dir/Hashing/hashingTech.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\Assignment2.dir
+  OBJECT_DIR = CMakeFiles\AssignmentHashingTechnique.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = Assignment2.exe
-  TARGET_IMPLIB = libAssignment2.dll.a
-  TARGET_PDB = Assignment2.exe.dbg
+  TARGET_FILE = AssignmentHashingTechnique.exe
+  TARGET_IMPLIB = libAssignmentHashingTechnique.dll.a
+  TARGET_PDB = AssignmentHashingTechnique.exe.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target AssignmentSkipList
@@ -165,7 +165,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Assignment2: phony Assignment2.exe
+build AssignmentHashingTechnique: phony AssignmentHashingTechnique.exe
 
 build AssignmentRBTree: phony AssignmentRBTree.exe
 
@@ -179,7 +179,7 @@ build AssignmentSkipList: phony AssignmentSkipList.exe
 #############################################
 # Folder: D:/PROGRAMMING/C++/Algorithms/Assignment2/cmake-build-debug
 
-build all: phony Assignment2.exe AssignmentSkipList.exe AssignmentRBTree.exe
+build all: phony AssignmentHashingTechnique.exe AssignmentSkipList.exe AssignmentRBTree.exe
 
 # =============================================================================
 # Built-in targets

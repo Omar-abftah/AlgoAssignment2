@@ -144,6 +144,7 @@ public:
     }
     void print(){
         for(int i = 0; i < size; i++){
+            cout<< i <<": ";
             for(auto j : map[i]){
                 cout<<j<<" ";
             }
@@ -207,10 +208,33 @@ int main()
           "Enter the size of the map: ";
     int size;cin>>size;
     auto *hashmap = new HashMap(size,hashingTech, numberOfCollisionTech);
-    hashmap->insert(10);
-    hashmap->insert(20);
-    if(hashmap->search(50))cout<<"Yes\n";
-    else cout<<"No\n";
+    while(true){
+        cout<<"1- Add new Number\n"
+              "2- Search For an Element\n"
+              "3- Print the Whole Map\n"
+              "4- Exit\n"
+              "Please enter the number of the function you want to do: ";
+        int op; cin>>op;
+        if(op == 1){
+            cout<<"Please enter the number you want to add: ";
+            int number;cin>>number;
+            hashmap->insert(number);
+        }
+        else if(op == 2){
+            cout<<"Please enter the number you want to search for: ";
+            int number;cin>>number;
+            bool isFound = hashmap->search(number);
+            cout<<"The number "<<number<<" is "<<(isFound ? "Found\n":"Not Found\n");
+        }
+        else if(op == 3){
+            hashmap->print();
+        }
+        else if(op == 4){
+            cout<<"EXITING.....";
+            break;
+        }
+        else cout<<"PLEASE ENTER A VALID CHOICE!";
+    }
     delete hashingTech;
     delete hashmap;
 
